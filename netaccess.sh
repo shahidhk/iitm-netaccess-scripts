@@ -10,6 +10,7 @@
 DTIME=`date +%Y%m%d%M%S`
 CURL_TMP1="/tmp/netaccess-bash-script-${DTIME}.tmp"
 CURL_TMP2="/tmp/netaccess-bash-script-${DTIME}.tmp"
+HEADERS="/tmp/netaccess-bash-script-headers.tmp"
 
 if [ $# -lt 2 ]
   then
@@ -21,12 +22,12 @@ USERNAME=$1
 PASSWORD=$2
 
 
-curl -s -d "userLogin=${USERNAME}&userPassword=${PASSWORD}" --dump-header headers https://netaccess.iitm.ac.in/account/login > ${CURL_TMP1}
-curl -L -s -b headers -X POST https://netaccess.iitm.ac.in/account/approve -d "duration=2&approveBtn=" > ${CURL_TMP2}
+curl -s -d "userLogin=${USERNAME}&userPassword=${PASSWORD}" --dump-header ${HEADERS} https://netaccess.iitm.ac.in/account/login > ${CURL_TMP1}
+curl -L -s -b ${HEADERS} -X POST https://netaccess.iitm.ac.in/account/approve -d "duration=2&approveBtn=" > ${CURL_TMP2}
 
 CURL_TST=`cat ${CURL_TMP2} | grep -c "<span class='label label-success'>Active</span>"`
 
-if [ ${CURL_TST} -eq 1 ]
+if [ ${CURL_TST} -gt 1 ]
 then
         STATUS_CODE=0
         STATUS="Authenticated!"
