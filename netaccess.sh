@@ -21,7 +21,6 @@ fi
 USERNAME=$1
 PASSWORD=$2
 
-
 curl -s -d "userLogin=${USERNAME}&userPassword=${PASSWORD}" --dump-header ${HEADERS} https://netaccess.iitm.ac.in/account/login > ${CURL_TMP1}
 curl -L -s -b ${HEADERS} -X POST https://netaccess.iitm.ac.in/account/approve -d "duration=2&approveBtn=" > ${CURL_TMP2}
 
