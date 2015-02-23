@@ -27,7 +27,7 @@ curl -L -s -b ${HEADERS} -X POST https://netaccess.iitm.ac.in/account/approve -d
 
 CURL_TST=`cat ${CURL_TMP2} | grep -c "<span class='label label-success'>Active</span>"`
 
-if [ ${CURL_TST} -gt 1 ]
+if [ ${CURL_TST} -gt 0 ]
 then
         STATUS_CODE=0
         STATUS="Authenticated!"
