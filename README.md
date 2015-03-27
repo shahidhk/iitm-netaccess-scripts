@@ -8,6 +8,6 @@ Scripts to authenticate through IITM Netaccess
     - `./netaccess.sh username password`
 2. Python:  
     dependencies:
-    - requests: `pip install requests`
-    usege:
+    - requests: `pip install requests`  
+    usage:
     - `./netaccess_commandline.py` 
