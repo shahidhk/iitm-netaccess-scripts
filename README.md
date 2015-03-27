@@ -6,8 +6,8 @@ Scripts to authenticate through IITM Netaccess
     - CURL: `sudo apt-get install curl`
     usage:
     - `./netaccess.sh username password`
-2. Python
-    dependencied:
+2. Python:  
+    dependencies:
     - requests: `pip install requests`
     usege:
     - `./netaccess_commandline.py` 
